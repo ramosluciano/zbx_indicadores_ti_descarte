@@ -30,14 +30,12 @@ $options = array(
 );
 
 $result = @API::Service()->get($options);
-$servicos_serviceid = $result[0]['serviceid'];
+$servicos_serviceid = @$result[0]['serviceid'];
 
 $options = array(
 		'output' => array('serviceid','name')
 		,'parentids' => $servicos_serviceid
 		,'selectDependencies' => array('serviceid')
-		,'excludeSearch' => true
-		,'search' => array('name' => 'ANS3')
 		,'sortfield' => 'name'
 );
 
@@ -157,9 +155,9 @@ $r_form = (new CForm('get'))
 
 		/**
 		 * Monta o Combo de localidades. 
-		 * Válido apenas para servicos LAN
+		 * 
 		 */
-		if($_servico == array_search('LAN', $servicos) || $_servico == array_search('WAN', $servicos) && !is_null($_cliente)){
+		if(!is_null($_cliente)){
 			$cmbLocalidade = new CComboBox('local', $_local);
 			$cmbLocalidade->addItem('XX', _("Selecione uma Localidade"));
 			$cmbLocalidade->addItem(0, _("Todas as Localidades"));
@@ -264,7 +262,6 @@ $r_form = (new CForm('get'))
 		 	$sessao->setValue('cliente',$_cliente);
 		 	$sessao->setValue('local', $_local);
 		 	$sessao->setValue('period', $_period);
-		 	$sessao->setValue('rel', '');
 		 	
 		 	$textoperiodo = $periods[$_REQUEST['period']];
 		 	$div->addItem((new CTag('h4', true, _("Período de coleta: $textoperiodo")))->addStyle('border-bottom: 1px solid #dfe4e7'));
@@ -284,7 +281,6 @@ $r_form = (new CForm('get'))
 		$srv_wdgt = (new CWidget())
 		->setTitle('Indicadores de TI')
 		->setControls($r_form)
-		->addItem(BR())
 		->addItem($div)
 		->show();
 
