@@ -1,0 +1,16 @@
+*** menu_orig.inc.php	2018-05-04 17:29:25.813892932 -0300
+--- menu.inc.php	2018-05-04 17:30:06.596289279 -0300
+*************** function zbx_construct_menu(&$main_menu,
+*** 111,116 ****
+--- 111,121 ----
+                                          'label' => _('IT services'),
+                                          'sub_pages' => ['chart5.php']
+                                  ],
++                                 [        
++                                         'url' => 'indicadores_ti.php',
++                                         'label' => _('Indicadores de TI'),
++                                         'sub_pages' => ['events.php', 'descarte_parcial.php']
++                                 ],
+                                  [
+                                          'url' => 'chart3.php'
+                                  ],
