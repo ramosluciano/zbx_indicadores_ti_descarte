@@ -122,12 +122,13 @@ O script a ser executado é o relatorio_Zabbix.php. Ele tem chamadas includes pa
 A sintaxe de execução é a seguinte:
 
 ```sh
-php relatorio_Zabbix.php CLIENTE DATA-INICIO DATA-FIM SERVIÇO [Descartes]
+php relatorio_Zabbix.php URL CLIENTE DATA-INICIO DATA-FIM SERVIÇO [Descartes]
 ```
 
 Onde:
 
-- CLIENTE: Nome ou sigla \do cliente, conforme está nos IT Services e Hostgroups;
+- URL: Endereço do servidor Zabbix. Pode ser o IP ou a URL mesmo (sem http ou https).
+- CLIENTE: Nome ou sigla do cliente, conforme está nos IT Services e Hostgroups;
 - DATA-INICIO: Data de inicio do período de aferição, no formato DD/MM/AAAA. Ex: 01/05/2018;
 - DATA-FIM: Data de fim do período de aferição, no formato DD/MM/AAAA. Ex: 31/05/2018.
 - SERVIÇO: Nome ou sigla do serviço, conforme está nos IT Services e Hostgroups. Ex: LAN, WAN, IDC, etc.;
@@ -140,8 +141,13 @@ php relatorio_Zabbix.php ITAU 11/04/2018 10/05/2018 WAN
 
 Notas: 
 - Por definição, a data de inicio do período de aferição começa À 0h0min e a data de fim do período termina 23h59min;
-- Na linha 242 do arquivo gera_pdf.php tem uma chamada API que acessa o Zabbix através da URL informada. Observe que no comando a URL está com o protocolo https. Caso seu servidor seja http, altere nessa linha.
-- Também nesse comando, você deve informar o usuário do Zabbix que tem acesso API aos hosts e a senha de autenticação desse usuário, substituindo nos campos 'USER' e 'PASSWORD'.
+- Na linha 242 do arquivo gera_pdf.php tem uma chamada API que acessa o Zabbix através da URL informada. Observe que no comando a URL está com o protocolo https. Caso seu servidor seja http, altere nessa linha;
+- Também nesse comando, você deve informar o usuário do Zabbix que tem acesso API aos hosts e a senha de autenticação desse usuário, substituindo nos campos 'USER' e 'PASSWORD';
+- Você deve criar, na raiz da pasta em que tiver o script, um subdiretório chamado "relatorios" e dentro dele, um subdiretório para cada serviço e dentro de cada serviço, um subdiretório para cada cliente desse serviço. Deve ficar assim:
+```sh
+/scripts/relatorios/SERVICO/CLIENTE
+```
+- Você deve criar, na raiz da pasta em que tiver o script, um subdiretório chamado "imagens" e dentro dela, inserir arquivos de imagem com o logotipo dos clientes. O nome do arquivo deve ser o nome ou sigla do cliente, como está nos IT Services e grupos do Zabbix e com a extensão .jpg.
 
 
 Lembrando mais uma vez que a geração dos dados pode não funcionar perfeitamente no seu ambiente, porque o script foi desenvolvido especificamente para as regras de negócio do Serpro. Talvez tenha que fazer mais alguns ajustes para o seu ambiente.
