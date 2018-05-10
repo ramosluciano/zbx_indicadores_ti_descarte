@@ -105,7 +105,10 @@ Onde:
 - URL: Endereço do servidor Zabbix. Pode ser o IP ou a URL mesmo (sem http ou https).
 - CLIENTE: Nome ou sigla do cliente, exatamente como está nos IT Services e nos grupos de host
 
-Exemplo: php sincronizaservico.php 10.0.0.1 VIVO
+Exemplo:
+```sh
+php sincronizaservico.php 10.0.0.1 VIVO
+```
 
 Notas:
 - Na linha 18 do script tem uma chamada API que acessa o Zabbix através dessa URL informada. Observe que no comando a URL está com o protocolo https. Caso seu servidor seja http, altere nessa linha.
@@ -131,10 +134,14 @@ Onde:
 - [Descartes]: Parâmetro opcional. Se informado, serão listados no relatório os eventos que foram descartados.
 
 Exemplo:
+```sh
 php relatorio_Zabbix.php ITAU 11/04/2018 10/05/2018 WAN
+```
 
-Nota: Por definição, a data de inicio do período de aferição começa À 0h0min e a data de fim do período termina 23h59min.
-
+Notas: 
+- Por definição, a data de inicio do período de aferição começa À 0h0min e a data de fim do período termina 23h59min;
+- Na linha 242 do arquivo gera_pdf.php tem uma chamada API que acessa o Zabbix através da URL informada. Observe que no comando a URL está com o protocolo https. Caso seu servidor seja http, altere nessa linha.
+- Também nesse comando, você deve informar o usuário do Zabbix que tem acesso API aos hosts e a senha de autenticação desse usuário, substituindo nos campos 'USER' e 'PASSWORD'.
 
 
 Lembrando mais uma vez que a geração dos dados pode não funcionar perfeitamente no seu ambiente, porque o script foi desenvolvido especificamente para as regras de negócio do Serpro. Talvez tenha que fazer mais alguns ajustes para o seu ambiente.
