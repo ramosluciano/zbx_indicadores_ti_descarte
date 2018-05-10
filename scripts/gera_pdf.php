@@ -1,6 +1,7 @@
 <?php
 /*
-* * Criado por Luciano Ramos (#11 1744)
+* * Criado por Luciano Souza Ramos
+* * luciano.ramos@serpro.gov.br
 * * Customização de Relatório de Eventos em formato PDF
 * *
 */
@@ -232,14 +233,14 @@ class PDF extends FPDF
 	
 		global $csv, $reg;
 		
-		require_once '/var/www/zabbix/include/config.inc.php';
+		require_once '/var/www/zabbix/include/config.inc.php'; // Diretorio de instalação do frontend do Zabbix
 		
 		$this->AddPage();
 		$this->AliasNbPages();
 		$this->SetFont('Times','',8);
 		
-		//$api = new ZabbixApi('https://'.$URL.'/api_jsonrpc.php', 'USER', 'PASSWORD');
-		$api = new ZabbixApi('http://'.$URL.'/api_jsonrpc.php', 'USER', 'PASSWORD'); // Inserir nome de usuario e senha para acesso a API do Zabbix
+		$api = new ZabbixApi('https://'.$URL.'/api_jsonrpc.php', 'USER', 'PASSWORD'); // Inserir nome de usuario e senha para acesso a API do Zabbix
+		
 		$options = array(
 				'output' => array('groupid', 'name'),
 				'search' => array('name' => '_'.$servico.'_'.$cliente),
