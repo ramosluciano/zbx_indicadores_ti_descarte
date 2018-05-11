@@ -143,10 +143,11 @@ Notas:
 - Por definição, a data de inicio do período de aferição começa À 0h0min e a data de fim do período termina 23h59min;
 - Na linha 242 do arquivo gera_pdf.php tem uma chamada API que acessa o Zabbix através da URL informada. Observe que no comando a URL está com o protocolo https. Caso seu servidor seja http, altere nessa linha;
 - Também nesse comando, você deve informar o usuário do Zabbix que tem acesso API aos hosts e a senha de autenticação desse usuário, substituindo nos campos 'USER' e 'PASSWORD';
-- Você deve criar, na raiz da pasta em que tiver o script, um subdiretório chamado "relatorios" e dentro dele, um subdiretório para cada serviço e dentro de cada serviço, um subdiretório para cada cliente desse serviço. Deve ficar assim:
+- Você deve criar, na raiz da pasta em que tiver o script, um subdiretório chamado "relatorios" e dentro dele, um subdiretório para cada serviço e dentro de cada serviço, um subdiretório para cada cliente desse serviço. É nesse subdiretório que os arquivos em PDF serão gerados. Deve ficar assim:
 ```sh
 /scripts/relatorios/SERVICO/CLIENTE
 ```
+- O script também gera, além do PDF, um arquivo no formato CSV, com os mesmos dados, no mesmo local;
 - Você deve criar, na raiz da pasta em que tiver o script, um subdiretório chamado "imagens" e dentro dela, inserir arquivos de imagem com o logotipo dos clientes. O nome do arquivo deve ser o nome ou sigla do cliente, como está nos IT Services e grupos do Zabbix e com a extensão .jpg.
 
 
