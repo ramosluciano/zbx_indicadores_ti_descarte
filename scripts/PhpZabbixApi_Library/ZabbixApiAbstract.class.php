@@ -208,15 +208,24 @@ abstract class ZabbixApiAbstract
         $this->id = number_format(microtime(true), 4, '', '');
 
         // build request array
-        $this->request = array(
-            'jsonrpc' => '2.0',
-            'method'  => $method,
-            'params'  => $params,
-            'auth'    => ($auth ? $this->auth : ''),
-            'id'      => $this->id
-        );
-		
-        // encode request array
+        if (!$auth) {
+                $this->request = array(
+                                'jsonrpc' => '2.0',
+                                'method'  => $method,
+                                'params'  => $params,
+                                'id'      => $this->id
+                );
+        } else {
+                $this->request = array(
+                                'jsonrpc' => '2.0',
+                                'method'  => $method,
+                                'params'  => $params,
+                                'auth'    => ($auth ? $this->auth : ''),
+                                'id'      => $this->id
+                );
+        }
+
+	// encode request array
         $this->requestEncoded = json_encode($this->request);
 
         // debug logging
