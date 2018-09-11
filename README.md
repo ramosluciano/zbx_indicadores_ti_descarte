@@ -136,7 +136,7 @@ Onde:
 
 Exemplo:
 ```sh
-php relatorio_Zabbix.php ITAU 11/04/2018 10/05/2018 WAN
+php relatorio_Zabbix.php servidor.zabbix ITAU 11/04/2018 10/05/2018 WAN
 ```
 
 Notas: 
