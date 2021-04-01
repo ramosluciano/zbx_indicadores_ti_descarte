@@ -169,3 +169,5 @@ Muito Obrigado!!!
 
 ![](https://github.com/ramosluciano/Indicadores-de-TI---Descarte-de-Eventos/blob/master/.docs/img/emoji.jpeg)
 
+!!!
+
